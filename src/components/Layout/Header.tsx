@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Zap } from "lucide-react";
+import { Rocket } from "@phosphor-icons/react";
 import { Space_Grotesk } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -13,36 +13,38 @@ const spaceGrotesk = Space_Grotesk({
 
 export default function Header() {
   return (
-    <header className="relative z-10 pt-8 pb-4 text-center items-center">
-      <Link href="https://buildfastwithai.com">
-        <Image
-          src="/dark.svg"
-          alt="Build Fast with AI"
-          width={70}
-          height={70}
-          className="absolute left-10"
-        />
-      </Link>
-      <div className="flex items-center justify-center gap-2 mb-1">
-        <Zap className="w-8 h-8 text-emerald-400" />
-        <h1
+    <motion.header
+      className="relative z-10 pt-6 pb-4 text-center items-center"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex items-center gap-3 mb-1">
+          <Rocket size={28} weight="fill" className="text-indigo-400" />
+          <h1
+            className={cn(
+              "text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400",
+              spaceGrotesk.className
+            )}
+          >
+            AI INTERVIEWER
+          </h1>
+          <Rocket
+            size={28}
+            weight="fill"
+            className="text-indigo-400 -scale-x-100"
+          />
+        </div>
+        <p
           className={cn(
-            "text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500",
+            "text-indigo-300/90 text-sm tracking-widest font-medium uppercase max-w-md",
             spaceGrotesk.className
           )}
         >
-          MEET PRODUCT PATEL
-        </h1>
-        <Zap className="w-8 h-8 text-emerald-400" />
+          Your personal AI assistant for interview preparation
+        </p>
       </div>
-      <p
-        className={cn(
-          "text-emerald-400/90 text-lg tracking-widest font-medium uppercase",
-          spaceGrotesk.className
-        )}
-      >
-        The AI vs Human Roast Debate
-      </p>
-    </header>
+    </motion.header>
   );
 }

@@ -35,9 +35,8 @@ export default function useDebateInitialization() {
           const { data: newDebate, error: createError } = await supabase
             .from("rt_debates")
             .insert({
-              title: "Human vs AI: The Great Debate",
-              description:
-                "Live debate between human intelligence and artificial intelligence",
+              title: "AI Interview Session",
+              description: "Professional interview session with AI interviewer",
               is_active: true,
             })
             .select()

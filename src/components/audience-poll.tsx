@@ -232,7 +232,7 @@ export default function AudiencePoll({ debateId = "current" }) {
         <div className="flex items-center gap-2">
           <Share2 className="w-5 h-5 text-emerald-400" />
           <h2 className="text-lg font-medium text-emerald-100">
-            Audience Consensus
+            Interview Feedback
           </h2>
         </div>
         <Button
@@ -265,7 +265,7 @@ export default function AudiencePoll({ debateId = "current" }) {
           {/* Human votes */}
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-emerald-100/80">Human Position</span>
+              <span className="text-emerald-100/80">Candidate Performance</span>
               <span className="text-emerald-400">{humanVotes.toFixed(1)}%</span>
             </div>
             <div className="relative h-3 w-full overflow-hidden rounded-full bg-emerald-950/50">
@@ -279,7 +279,7 @@ export default function AudiencePoll({ debateId = "current" }) {
           {/* AI votes */}
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-emerald-100/80">AI Position</span>
+              <span className="text-emerald-100/80">Interview Quality</span>
               <span className="text-emerald-400">{aiVotes.toFixed(1)}%</span>
             </div>
             <div className="relative h-3 w-full overflow-hidden rounded-full bg-emerald-950/50">
@@ -292,8 +292,8 @@ export default function AudiencePoll({ debateId = "current" }) {
 
           {showVoteFeedback && (
             <div className="text-center text-sm mt-2 text-emerald-500">
-              Thanks! Your vote for {lastVote === "human" ? "Human" : "AI"} was
-              recorded.
+              Thanks! Your rating for{" "}
+              {lastVote === "human" ? "Candidate" : "Interview"} was recorded.
             </div>
           )}
 
@@ -303,13 +303,13 @@ export default function AudiencePoll({ debateId = "current" }) {
               onClick={() => handleVoteClick("human")}
               className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-none"
             >
-              Vote Human
+              Rate Candidate
             </Button>
             <Button
               onClick={() => handleVoteClick("ai")}
               className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white border-none"
             >
-              Vote AI
+              Rate Interview
             </Button>
           </div>
 
@@ -323,7 +323,7 @@ export default function AudiencePoll({ debateId = "current" }) {
             onClick={handleShareLink}
           >
             <ExternalLink className="h-3 w-3" />
-            Open Voting Dashboard
+            Open Feedback Dashboard
           </Button>
         </div>
       )}
